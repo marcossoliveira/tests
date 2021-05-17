@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.key-def {
+  font-size: 18px;
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.value-def {
+  background-color: rgba(230, 230, 230, 1);
+  padding: 8px;
+  border-radius: 5px;
+  color: rgba(100, 100, 100, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.key-value-wrap {
+  overflow-x: hidden;
+  margin-bottom: 16px;
+}

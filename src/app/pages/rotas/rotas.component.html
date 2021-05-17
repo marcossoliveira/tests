@@ -1,0 +1,62 @@
+<mat-toolbar>
+  <span>Rotas</span>
+</mat-toolbar>
+
+<div class="container">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z2">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="rota">
+      <th mat-header-cell *matHeaderCellDef> Rota </th>
+      <td mat-cell *matCellDef="let element"> {{element.rota}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="auditorias">
+      <th mat-header-cell *matHeaderCellDef> Auditorias </th>
+      <td mat-cell *matCellDef="let element"> {{element.contadores.auditorias}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="coletas">
+      <th mat-header-cell *matHeaderCellDef> Coletas </th>
+      <td mat-cell *matCellDef="let element"> {{element.contadores.coletas}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="os">
+      <th mat-header-cell *matHeaderCellDef> Ord. Serviço </th>
+      <td mat-cell *matCellDef="let element"> {{element.contadores.os}} </td>
+    </ng-container>]
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element">
+        <div class="d-flex ">
+          <mat-icon style="color: #888" *ngIf="element.status === 'pendente'">hdr_strong</mat-icon>
+          <mat-icon style="color: #2266dd" *ngIf="element.status === 'andamento'">hdr_strong</mat-icon>
+          <mat-icon style="color: #22dd66" *ngIf="element.status === 'concluido'">hdr_strong</mat-icon>
+          <div style="margin-right: 8px"></div>
+          {{element.status}}
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef align="end"> </th>
+      <td mat-cell *matCellDef="let element" align="end">
+        <button mat-icon-button color="warn" matTooltip="Ocorrências de rota"><mat-icon>error</mat-icon></button>
+        <button mat-icon-button color="primary" [routerLink]="['./tarefas']" [queryParams]="{id: element.id}" matTooltip="Abrir rota"><mat-icon>search</mat-icon></button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>
